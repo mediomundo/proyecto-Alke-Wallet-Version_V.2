@@ -1,22 +1,26 @@
 $(document).ready(() => {
-  // Cargar y mostrar el saldo actualizado
-  // Usar el selector de jQuery y el método text()
+// Cargar y mostrar el saldo actualizado
+  // Obtener el saldo (si es nulo, usar "0")
   const saldo = localStorage.getItem("saldo") || "0";
   $("#saldoDisplay").text(`$${saldo}`);
 
-  // Manejo de botones con alert de redirección con jQuery
-  $(".btn-lg").click(function (e) {
-    const destino = $(this).attr("href");
-    const texto = $(this).find("span").text();
+  // Manejo de botones de navegación
+  $(".btn-lg").on("click", function (e) {
+    e.preventDefault(); 
+    
+    // 1. Declaramos la variable
+    const destino = $(this).attr("href"); 
+    const nombreSeccion = $(this).find("span").text();
 
-    console.log(`Navegando a: ${texto}`);
+    alert(`Redirigiendo a: ${nombreSeccion}`);
+    
+    window.location.href = destino; 
   });
 
-  // Botón Salir con jQuery
+  // Botón Salir
   $("#btnSalir").on("click", () => {
-    if (confirm("¿Seguro que deseas cerrar tu sesión?")) {
-      // No borra el saldo para que persista en la siguiente entrada
-      globalThis.location.href = "index_login.html";
+    if (confirm("¿Estás seguro de que deseas cerrar sesión?")) {
+      window.location.href = "index_login.html";
     }
   });
 });

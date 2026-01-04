@@ -79,7 +79,7 @@ $(document).ready(() => {
 
       // Registrar en historial
       let historial = JSON.parse(localStorage.getItem("movimientos")) || [];
-      historial.unshift(`Envío a ${contactoSeleccionado}: -$${monto}`);
+      historial.unshift(`Envío a ${contactoSeleccionado} - -$${monto}`);
       localStorage.setItem("movimientos", JSON.stringify(historial));
 
       alert(`Transferencia exitosa a ${contactoSeleccionado}`);

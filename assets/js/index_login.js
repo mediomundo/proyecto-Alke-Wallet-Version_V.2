@@ -1,7 +1,7 @@
 $(document).ready(() => {
   // Define las credenciales constantes
   const USER_VALID = "usuario@wallet.com";
-  const PASS_VALID = "Wallet1234";
+  const PASS_VALID = "wallet1234";
 
   // Manejo del evento submit con jQuery
   $("#formLogin").on("submit", (e) => {
@@ -23,8 +23,8 @@ $(document).ready(() => {
       // Inicializa historial base si está vacío
       if (!localStorage.getItem("movimientos")) {
         const movimientosBase = [
-          "Depósito inicial: +$160000",
-          "Apertura de cuenta Alke Wallet",
+          "Depósito inicial - +$160000",
+          "Apertura de cuenta - $0",
         ];
         localStorage.setItem("movimientos", JSON.stringify(movimientosBase));
       }

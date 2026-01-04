@@ -1,8 +1,8 @@
 $(document).ready(() => {
   // Mostrar el saldo actual al cargar la página
   const actualizarVistaSaldo = () => {
-    let saldo = localStorage.getItem("saldo") || "0";
-    $("#currentBalance").text("$" + saldo);
+    const saldoActual = localStorage.getItem("saldo") || "0";
+    $("#currentBalance").text(`$${saldoActual}`);
   };
 
   actualizarVistaSaldo();
@@ -25,22 +25,22 @@ $(document).ready(() => {
 
       // Actualizar Historial de Transacciones
       let historial = JSON.parse(localStorage.getItem("movimientos")) || [];
-      historial.unshift(`Depósito realizado: +$${monto}`);
+      historial.unshift(`Depósito realizado - +$${monto}`);
       localStorage.setItem("movimientos", JSON.stringify(historial));
 
       alert(`¡Depósito exitoso! Tu nuevo saldo es: $${saldoActual}`);
 
       // Redirección dinámica al menú
-      globalThis.location.href = "menu.html";
+      window.location.href = "menu.html";
     } else {
-      alert("Por favor, ingresa un monto válido.");
+      alert("Por favor, ingresa un monto válido mayor a cero.");
     }
   });
 
   // Botón Salir
-  $("#btnSalir").click(() => {
-    if (confirm("¿Estás seguro que deseas salir al Login?")) {
-      globalThis.location.href = "index_login.html";
+  $("#btnSalir").onclick(() => {
+    if (confirm("¿Seguro que deseas cerrar sesión?")) {
+      window.location.href = "index_login.html";
     }
   });
 });
